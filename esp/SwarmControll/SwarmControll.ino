@@ -18,14 +18,15 @@ const int pwmChannel = 0;
 const int resolution = 8;
 int dutyCycle = 200;
 
-String serverName = "ws://192.168.0.107:3000/";
+String serverName = "ws://10.10.206.199:3000/";
 String movePath = "move";
 
-const char* ssid = "Khalid";
-const char* password = "sadiq628";
+const char* ssid = "UIU-STUDENT";
+// const char* password = "sadiq628";
+const char* password = "12345678";
 
 // Set your Static IP address
-IPAddress local_IP(192, 168, 0, 184);
+IPAddress local_IP(10,10,249,250);
 // Set your Gateway IP address
 IPAddress gateway(192, 168, 0, 1);
 
@@ -45,6 +46,9 @@ WebsocketsClient client;
 void onMessageCallback(WebsocketsMessage message) {
   Serial.print("Got Message: ");
   Serial.println(message.data());
+  //stop
+  // calculate new path
+  
 }
 
 void onEventsCallback(WebsocketsEvent event, String data) {
@@ -218,16 +222,6 @@ void handleSocket() {
 
 void loop() {
   // moveController();
-  // handleHttpRequest();
-  // if ((millis() - http_lastTime) > 5000) {
-  //   JsonDocument doc;
-  //   doc["event"] = "message";
-  //   doc["data"] = "Hello, NestJS!";
-  //   char output[256];
-  //   serializeJson(doc, output);
-  //   client.send(output);
-  //   http_lastTime = millis();
-  // }
 
   handleSocket();
   wifiReconnect();
